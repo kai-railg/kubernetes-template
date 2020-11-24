@@ -1,0 +1,9 @@
+bases:
+  - ../../base/app
+patchesStrategicMerge:
+  - configmap
+  - deployment
+  - persistentVolume
+  - persistentVolumeClaim
+  - service
+  - storage

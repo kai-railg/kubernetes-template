@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: app/v1
+metadata:
+  name:  app-flask-service
+spec:
+  selector:
+    app:  app-flask
+  type:  NodePort
+  ports:
+  - name:  app-flask
+    port:  80
+    targetPort:  8080
+    nodePort: 31111
