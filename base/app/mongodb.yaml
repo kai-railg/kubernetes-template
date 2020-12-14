@@ -1,0 +1,26 @@
+apiVersion: kubedb.com/v1alpha1
+kind: MongoDB
+metadata:
+  name: mongodb
+spec:
+  databaseSecret:
+    secretName: flask-mongodb-secret-env
+  nodeSelector:
+    kubernetes.io/hostname: docker-desktop
+  storage:
+    selector:
+      matchLabels:
+        app: recplay
+        component: recplay-mongodb
+    resources:
+      requests:
+        storage: 1T
+  podTemplate:
+    spec:
+      resources:
+        limits:
+          cpu: 4
+          memory: 15Gi
+        requests:
+          cpu: 4
+          memory: 15Gi

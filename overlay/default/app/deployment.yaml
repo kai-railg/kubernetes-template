@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  app-flask
+  labels:
+    name:  app-flask
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name:  app-flask
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: docker-desktop
+      containers:
+      - image:  app-flask:v2
+        name:  app-flask
+        resources:
+          requests:
+            cpu: "30m"
+            memory: "55M"
+#        livenessProbe:
+#          httpGet:
+#            path: /_status/healthz
+#            port: 5000
+#          initialDelaySeconds: 90
+#          timeoutSeconds: 10
+#        readinessProbe:
+#          httpGet:
+#            path: /_status/healthz
+#            port: 5000
+#          initialDelaySeconds: 30
+#          timeoutSeconds: 10
+        env:
+        - name:  ENVVARNAME
+          value:  ENVVARVALUE
+        ports:
+        - containerPort:  5000
+          name:  app-flask
+        volumeMounts:
+        - mountPath: /data
+          name: app-flask-local
+      volumes:
+        - name: data
+          emptyDir: {}
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      name:  app-flask
