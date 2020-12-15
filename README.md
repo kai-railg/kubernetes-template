@@ -10,5 +10,8 @@ kubernetes模版
  - kustomization
 
  
-计划中
-  1. route 使用go语言开发的GRPC容器
+## 使用
+
+```
+$ kubectl apply -k .
+```
