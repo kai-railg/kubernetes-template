@@ -2,6 +2,7 @@ resources:
   - configmap.yaml
   - deployment.yaml
   - persistentVolume.yaml
-#  - persistentVolumeClaim.yaml
+  - persistentVolumeClaim.yaml
   - service.yaml
 #  - mongodb.yaml
+  - storage.yaml

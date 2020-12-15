@@ -18,7 +18,7 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: docker-desktop
       containers:
-      - image:  app-flask:v1
+      - image:  app-flask:v2
         name:  app-flask
         resources:
           requests:
@@ -38,7 +38,7 @@ spec:
 #          timeoutSeconds: 10
         env:
         - name:  ENVVARNAME
-          value:  ENVVARVALUE       
+          value:  ENVVARVALUE
         ports:
         - containerPort:  5000
           name:  app-flask
@@ -47,8 +47,11 @@ spec:
           name: data
       volumes:
         - name: data
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: app-flask-pvc
+#          emptyDir: {}
       restartPolicy: Always
+
   selector:
     matchLabels:
       name:  app-flask
