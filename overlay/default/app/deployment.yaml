@@ -44,11 +44,14 @@ spec:
           name:  app-flask
         volumeMounts:
         - mountPath: /data
-          name: app-flask-local
+          name: data
       volumes:
         - name: data
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: app-flask-pvc
+#          emptyDir: {}
       restartPolicy: Always
+
   selector:
     matchLabels:
       name:  app-flask
