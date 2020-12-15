@@ -1,0 +1,10 @@
+kind: Role # Role针对namespace级别，对于node级别，使用ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: appl-flask  # kind为Role时必须携带，为ClusterRole不携带
+  name: app-flask-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]   # 资源类型
+    resourceNames: []   # 资源名称
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]  # 可以执行全部的操作

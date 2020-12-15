@@ -1,0 +1,5 @@
+bases:
+  - ../../../base/namespace
+patchesStrategicMerge:
+  - namespace.yaml
+  - resource_quota.yaml

@@ -1,0 +1,13 @@
+kind: RoleBinding # RoleBinding和ClusterRole组合使用，针对node级别，不携带namespace参数
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: app-flask-rolebinding
+  namespace: app-flask
+subjects:  # 被作用者
+- kind: ServiceAccount   # User、Group类型和ServiceAccount有对应关系
+  name: app-flask-user  # 名称
+  apiGroup: rbac.authorization.k8s.io
+roleRef:  # 指定role
+  kind: Role
+  name: app-flask-role
+  apiGroup: rbac.authorization.k8s.io

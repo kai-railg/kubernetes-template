@@ -4,6 +4,7 @@ metadata:
   name:  app-flask
   labels:
     name:  app-flask
+  namespace: app-flask
 spec:
   strategy:
     rollingUpdate:

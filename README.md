@@ -13,5 +13,6 @@ kubernetes模版
 ## 使用
 
 ```
+$ cd ./overlay/default
 $ kubectl apply -k .
 ```

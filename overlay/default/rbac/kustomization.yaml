@@ -1,0 +1,6 @@
+bases:
+  - ../../../base/rbac
+patchesStrategicMerge:
+  - role.yaml
+  - rolebinding.yaml
+  - user.yaml

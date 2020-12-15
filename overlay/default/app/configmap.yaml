@@ -4,6 +4,7 @@ metadata:
   name: app-configmap
   labels:
     app: app-configmap
+  namespace: app-flask
 data:
   user: "your name"
 

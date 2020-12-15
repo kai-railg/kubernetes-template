@@ -2,6 +2,7 @@ apiVersion: kubedb.com/v1alpha1
 kind: MongoDB
 metadata:
   name: mongodb
+  namespace: app-flask
 spec:
   databaseSecret:
     secretName: flask-mongodb-secret-env
